@@ -1,0 +1,53 @@
+[package]
+name = "rocket-launcher"
+version = "1.1.6"
+description = "Rocket Launcher for Need for Speed: World"
+authors = ["speedou"]
+license = "MIT"
+repository = "https://github.com/SoapboxRaceWorld/GameLauncher_NFSW"
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.5.6", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.10.3", features = ["image-ico", "image-png"] }
+tauri-plugin-log = "2"
+tauri-plugin-shell = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-process = "2"
+tauri-plugin-http = "2"
+reqwest = { version = "0.12", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Threading",
+    "Win32_System_JobObjects",
+] }
+hyper = { version = "1", features = ["server", "http1"] }
+hyper-util = { version = "0.1", features = ["tokio"] }
+http-body-util = "0.1"
+md-5 = "0.10"
+sha1 = "0.10"
+sha2 = "0.10"
+hostname = "0.4"
+base64 = "0.22"
+quick-xml = "0.37"
+lzma-rs = "0.3"
+futures-util = "0.3"
+rayon = "1"
+sysinfo = "0.33"
+discord-rich-presence = "0.2"
+flate2 = "1"
